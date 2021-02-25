@@ -3,9 +3,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Prepare') {
+            steps {
+                sh 'echo $PATH && node -v && npm -v'
+            }
+        }
         stage('Build') {
             steps {
-                sh 'node -v'
+                sh 'npm install'
             }
         }
         stage('Test') {
